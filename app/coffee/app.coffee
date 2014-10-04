@@ -39,12 +39,16 @@ define [
             'angular-sid-constants'
         ]
         .config [
-            '$interpolateProvider', '$logProvider', '$locationProvider', '$httpProvider'
-            ($interpolateProvider, $logProvider, $locationProvider, $httpProvider) ->
-                #$interpolateProvider.startSymbol '(('
-                #$interpolateProvider.endSymbol '))'
-                # need to check debugEnabled existance due to angular-mock lack
-                # $logProvider.debugEnabled? '<%= grunt_template_debug %>' == 'true'
+            '$interpolateProvider'
+            ($interpolateProvider) ->
+            # if you need to change the interpolation symbols
+            # $interpolateProvider.startSymbol '(('
+            # $interpolateProvider.endSymbol '))'
+        ]
+        .config [
+            '$locationProvider'
+            ($locationProvider) ->
+                # enable or disable the html5 mode
                 $locationProvider.html5Mode true
         ]
         .config [
@@ -52,6 +56,7 @@ define [
             ($httpProvider) ->
               "use strict"
               $httpProvider.interceptors.push "errorInterceptorFactory"
+              $httpProvider.interceptors.push "requestInterceptorFactory"
         ]
         .config routes
     $body = angular.element('body')
