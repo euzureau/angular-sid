@@ -69,7 +69,7 @@ module.exports = (grunt) ->
         #
         express:
             options:
-                debug: false
+                debug: true
                 port: 9002
                 background: true
                 opts: ['node_modules/coffee-script/bin/coffee']
