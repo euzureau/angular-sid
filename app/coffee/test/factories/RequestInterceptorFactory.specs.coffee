@@ -7,15 +7,18 @@ define [
     app,
     mocks) ->
 
-        describe "errorInterceptorFactory: ", ->
+        describe "requestInterceptorFactory: ", ->
             $rootScope = undefined
             $location = undefined
             $httpBackend = undefined
             $route = undefined
-            $controller = undefined
-            i18nFactory = undefined
-            mainCtrl = undefined
             scope = undefined
+            $controller = undefined
+            requestInterceptorFactory = undefined
+            i18nFactory = undefined
+            authService = undefined
+            indexCtrl = undefined
+            token = 'ABC'
 
             beforeEach ->
                 module "angular-sid"
@@ -24,16 +27,19 @@ define [
                     $location = $injector.get "$location"
                     $httpBackend = $injector.get "$httpBackend"
                     $controller = $injector.get "$controller"
-                    i18nFactory  = $injector.get "i18nFactory"
                     $route = $injector.get "$route"
+                    i18nFactory = $injector.get "i18nFactory"
+                    requestInterceptorFactory = $injector.get "requestInterceptorFactory"
+                    authService = $injector.get "authService"
                     scope = $rootScope.$new()
+                    $location.path '/index'
 
                     $httpBackend
                         .when("GET", "lang/EN_en.json")
                         .respond (method, url, data, headers) ->
                             [ 200, {}, {}]
 
-                    mainCtrl = $controller("mainCtrl",
+                    indexCtrl = $controller("indexCtrl",
                         $scope: scope
                     )
                     $httpBackend.flush()
@@ -43,23 +49,16 @@ define [
                 $httpBackend.verifyNoOutstandingRequest()
 
             describe "init: ", ->
-                it "should handle error 500", ->
-                    rsSpy = spyOn($rootScope, '$broadcast').andCallThrough()
+                it "should set the token", ->
+                    requestSpy = spyOn(requestInterceptorFactory, 'request').andCallThrough()
+                    authSpy = spyOn(authService, 'getToken').andCallThrough()
+                    authService.setToken token
                     $httpBackend
                         .when("GET", "lang/FR_fr.json")
                         .respond (method, url, data, headers) ->
-                            [ 500, {}, {}]
+                            [ 200, {}, {}]
                     i18nFactory.getLang 'FR_fr'
                     $httpBackend.flush()
-                    expect(rsSpy).toHaveBeenCalled()
-                    expect(scope.modalError.show).toBeTruthy()
-
-                it "should redirect to login", ->
-                    $httpBackend
-                        .when("GET", "lang/FR_fr.json")
-                        .respond (method, url, data, headers) ->
-                            [ 401, {}, {}]
-                    i18nFactory.getLang 'FR_fr'
-                    $httpBackend.flush()
-                    expect($location.path()).toEqual '/login'
+                    expect(requestSpy).toHaveBeenCalled()
+                    expect(authSpy).toHaveBeenCalled()
 

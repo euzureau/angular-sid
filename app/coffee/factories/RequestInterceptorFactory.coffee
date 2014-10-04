@@ -18,8 +18,8 @@ define [], ->
     # </pre>
     ###
     [
-        "$log","$rootScope", "$location", "authService",
-        ($log, $rootScope, $location, authService) ->
+        "$log", "authService",
+        ($log, authService) ->
 
             ###*
             # @ngdoc function
@@ -33,17 +33,4 @@ define [], ->
                 if authService.isLogged()
                     config.headers.Authorization = 'Bearer ' + authService.getToken()
                 config
-
-            ###*
-            # @ngdoc function
-            # @name response
-            # @methodOf angular-sid-factories.requestInterceptorFactory
-            # @function
-            # @param {object} response the response
-            # @description returns the response
-            ###
-            response: (response) ->
-                if response.status is 401
-                    $location.path '/login'
-                response
     ]

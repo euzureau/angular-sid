@@ -18,31 +18,8 @@ define [], ->
     # </pre>
     ###
     [
-        "$log","$rootScope",
-        ($log, $rootScope) ->
-
-            ###*
-            # @ngdoc function
-            # @name request
-            # @methodOf angular-sid-factories.errorInterceptorFactory
-            # @function
-            # @param {object} config the config
-            # @description returns the config
-            ###
-            request: (config) ->
-                config
-
-            ###*
-            # @ngdoc function
-            # @name response
-            # @methodOf angular-sid-factories.errorInterceptorFactory
-            # @function
-            # @param {object} response the response
-            # @description returns the response
-            ###
-            response: (response) ->
-                response
-
+        "$log","$rootScope", "$location"
+        ($log, $rootScope, $location) ->
             ###*
             # @ngdoc function
             # @name responseError
@@ -58,6 +35,8 @@ define [], ->
                     message: rejection.data
 
                 switch rejection.status
+                    when 401
+                        $location.path '/login'
                     when 500
                         $rootScope.$broadcast 'API_ERROR', error
                 rejection
