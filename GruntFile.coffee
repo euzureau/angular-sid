@@ -54,7 +54,7 @@ module.exports = (grunt) ->
                 files: ['**/*.coffee', '!**/_*.coffee']
                 tasks: ['coffee:local', 'coffee:all']
             less:
-                files : ['**/*.less', '!**/_*.less']
+                files : ['**/*.less']
                 tasks : ['less:all']
             html2js:
                 files : ['app/tpl/**/*.tpl.html']
@@ -152,6 +152,7 @@ module.exports = (grunt) ->
 
     grunt.registerTask 'serve', () ->
         grunt.task.run([
+            'build'
             'express:local'
             'open:server'
             'watch'
