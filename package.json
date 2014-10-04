@@ -12,6 +12,7 @@
         "karma" : "latest",
         "karma-jasmine" : "latest",
         "karma-requirejs": "latest",
+        "karma-junit-reporter": "latest",
         "karma-phantomjs-launcher" : "latest",
         "karma-coverage" : "latest",
         "grunt-cli" : "latest",
