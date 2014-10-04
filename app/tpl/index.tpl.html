@@ -1,0 +1,44 @@
+<div ng-controller="mainCtrl">
+    <div nav-directive></div>
+    <div error-modal-directive></div>
+    <div class="panel panel-primary panel-index">
+        <div class="panel-heading">
+            <h1 class="panel-title" i18n="h1"></h1>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <li
+                    class="list-group-item">
+                    <a
+                        href="/docs/index.html"
+                        target="_blank"
+                        i18n="code-documentation">
+                    </a>
+                </li>
+                <li
+                    class="list-group-item">
+                    <a
+                        href="/report/index.html"
+                        target="_blank"
+                        i18n="code-coverage">
+                    </a>
+                </li>
+                <li
+                    class="list-group-item">
+                    <a
+                        href="https://github.com/cbragard/angular-sid"
+                        target="_blank"
+                        i18n="project-on-github">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="panel-footer clearfix">
+            <button
+                class="btn btn-info pull-right"
+                ng-click="toggleModalError($event)"
+                i18n="show-error-modal">
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+{
+    "h1" : "Angular Sid",
+    "action" : "Action",
+    "close" : "Close",
+    "code-documentation" : "Documentation",
+    "code-coverage" : "Code coverage",
+    "dropdown" : "Dropdown",
+    "error-modal" : "Error modal",
+    "error-modal-title" : "Oops...",
+    "error-modal-content" : "Error modal content",
+    "link" : "Link",
+    "project-on-github" : "Project on Github",
+    "submit" : "Submit",
+    "show-error-modal" : "Show modal",
+
+
+    "brand" : "Brand",
+    "another-action" : "Another action",
+    "something-else-here" : "Something else here",
+    "separated-link" : "Separated link",
+    "one-more-separated-link" : "One more separated link",
+    "toogle-navigation" : "Toggle navigation"
+}

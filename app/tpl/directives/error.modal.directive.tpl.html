@@ -1,0 +1,34 @@
+<div
+    class="modal"
+    id="modalError"
+    role="dialog"
+    ng-show="modalError.show">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    aria-hidden="true"
+                    ng-click="modalError.show=false;">
+                    &times;
+                </button>
+                <h3
+                    class="modal-title"
+                    i18n="error-modal-title">
+                </h3>
+            </div>
+            <div class="modal-body">
+                <p i18n="error-modal-content"></p>
+            </div>
+            <div class="modal-footer">
+                <a
+                    ng-click="modalError.show=false;"
+                    class="btn"
+                    href="#"
+                    i18n="close">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
