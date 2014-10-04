@@ -32,6 +32,9 @@ app.configure "local", ->
 app.use express.static(path.join(__dirname, "..", appDirName))
 app.use app.router
 
+app.post '/login', (req, res) ->
+    res.send { token : 'XYZ' }
+
 app.get '/docs/*', (req, res) ->
     if !req.xhr
         res.sendfile 'web/docs/index.html'

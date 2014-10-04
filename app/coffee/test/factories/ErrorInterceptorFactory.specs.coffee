@@ -7,7 +7,7 @@ define [
     app,
     mocks) ->
 
-        describe "mainCtrl: ", ->
+        describe "errorInterceptorFactory: ", ->
             $rootScope = undefined
             $location = undefined
             $httpBackend = undefined
@@ -43,8 +43,14 @@ define [
                 $httpBackend.verifyNoOutstandingRequest()
 
             describe "init: ", ->
-                it "should toggle modalError", ->
-                    expect(scope.modalError.show).toBeFalsy()
-                    scope.toggleModalError()
+                it "should handle error 500", ->
+                    rsSpy = spyOn($rootScope, '$broadcast').andCallThrough()
+                    $httpBackend
+                        .when("GET", "lang/FR_fr.json")
+                        .respond (method, url, data, headers) ->
+                            [ 500, {}, {}]
+                    i18nFactory.getLang 'FR_fr'
+                    $httpBackend.flush()
+                    expect(rsSpy).toHaveBeenCalled()
                     expect(scope.modalError.show).toBeTruthy()
 

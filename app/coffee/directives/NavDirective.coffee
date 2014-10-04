@@ -17,5 +17,6 @@ define [], ->
             templateUrl: "directives/nav.directive.tpl.html"
             replace: false
             scope: false
+
             link: (scope, element, attrs) ->
     ]

@@ -18,13 +18,38 @@ define [], ->
             replace: false
             restrict: 'A'
             scope: false
-
+            ###*
+            # @ngdoc function
+            # @name compile
+            # @methodOf angular-sid-directives.i18nDirective
+            # @function
+            # @param {Object} tElement the element
+            # @param {Object} tAttrs the attributes of element
+            # @param {Boolean} transclude transclude boolean
+            # @description compiles the directive
+            ###
             compile: (tElement, tAttrs, transclude) ->
-
+                ###*
+                # @ngdoc function
+                # @name setElement
+                # @methodOf angular-sid-directives.i18nDirective
+                # @function
+                # @param {Object} $attr the attribute
+                # @param {String} elmt the element
+                # @description set the value of the element attribute
+                ###
                 setElement = (attr, attrValue) ->
                     val = i18nService.getLabel attrValue
                     tAttrs.$set attr, $sce.getTrustedHtml val
-
+                ###*
+                # @ngdoc function
+                # @name translate
+                # @methodOf angular-sid-directives.i18nDirective
+                # @function
+                # @param {Object} $attr the attributes
+                # @param {Object} elmt the element
+                # @description translate an element based on the i18n attribute
+                ###
                 translate = (attr, elmt) ->
                     val = i18nService.getLabel attr.i18n
                     html = $sce.getTrustedHtml val
@@ -43,6 +68,8 @@ define [], ->
                 setElement 'name', tAttrs.i18nName if tAttrs.i18nName
 
                 setElement 'href', tAttrs.i18nHref if tAttrs.i18nHref
+
+                setElement 'placeholder', tAttrs.i18nPlaceholder if tAttrs.i18nPlaceholder
 
                 translate tAttrs, tElement if tAttrs.i18n
     ]

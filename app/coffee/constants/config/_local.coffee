@@ -5,3 +5,4 @@
 define [], () ->
     config =
         DEFAULT_LANG : 'EN_en'
+        AUTH_URL : '/login'

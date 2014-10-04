@@ -72,6 +72,10 @@ define [
                     i18n = $compile('<a i18n i18n-name="brand"></a>')(scope)
                     expect(i18n.attr('name')).toEqual "Brand"
 
+                it "should set name", ->
+                    i18n = $compile('<input type="text" i18n i18n-placeholder="brand" />')(scope)
+                    expect(i18n.attr('placeholder')).toEqual "Brand"
+
                 it "should replace", ->
                     i18n = $compile('<span i18n="brand" i18n-replace="true">toremove</span>')(scope)
                     #expect(i18n.text()).toEqual "Brand"

@@ -21,5 +21,14 @@ define [
                         i18nFactory.getLang()
                     ]
 
+            # login route
+            $routeProvider.when "/login",
+                templateUrl: "login.tpl.html"
+                controller: "loginCtrl"
+                resolve :
+                    getLang : ['i18nFactory', (i18nFactory) ->
+                        i18nFactory.getLang()
+                    ]
+
             $routeProvider.otherwise redirectTo: "/index"
     ]

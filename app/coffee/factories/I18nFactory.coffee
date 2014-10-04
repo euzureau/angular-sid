@@ -6,10 +6,10 @@ define [], ->
     "use strict"
     ###*
     # @ngdoc service
-    # @name angular-sid-factories.I18nFactory
+    # @name angular-sid-factories.i18nFactory
     # @description
     #
-    # Angular I18n factory.
+    # Angular i18n factory.
     #
     # <h2>Settings</h2>
     # <pre>
@@ -30,10 +30,10 @@ define [], ->
             i18nService
             config
         ) ->
-            ###
+            ###*
             @ngdoc function
             @name getLang
-            @methodOf angular-sid-factories.I18nFactory
+            @methodOf angular-sid-factories.i18nFactory
             @function
             @description fetch the lang and the appropriated bundles
             ###

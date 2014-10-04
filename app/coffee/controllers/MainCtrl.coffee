@@ -19,11 +19,14 @@ define [], ->
         '$log'
         '$scope'
         'i18nFactory'
+        'authService'
         (
             $log
             $scope
             i18nFactory
+            authService
         ) ->
+            $scope.authService = authService
             $scope.modalError =
                 show: false
 

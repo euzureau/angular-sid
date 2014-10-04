@@ -18,8 +18,8 @@ define [], ->
     # </pre>
     ###
     [
-        "$log","$window","$rootScope",
-        ($log, $window, $rootScope) ->
+        "$log","$rootScope",
+        ($log, $rootScope) ->
 
             ###*
             # @ngdoc function

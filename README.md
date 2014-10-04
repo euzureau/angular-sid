@@ -3,25 +3,26 @@ Angular sid
 
 Angular sid is an application skeleton based on AngularJS.
 
-Whatever the web app you need create, you will enjoy instant development
-tools and features :
+Whatever the web app you need to create, you will enjoy instant development
+tools including the following features :
 
 * an up-to-date version of [AngularJS] : 1.3-X
-* [NodeJS], [Express] to run a local development instance
+* [NodeJS], [Express] configured and ready to run a local development instance
 * [Grunt] with available tasks to check, compile, test and deploy your files
 * [Coffee-script] for writting and compiling your javascript source files
-* [Angular UI], [Bootstrap] and [lessCSS] for the layout
+* [Angular UI], [Bootstrap] and [lessCSS] for the design part
 * [Karma], [Jasmine] for the unit tests
 * [Bower] & [RequireJS] to install and load all dependencies
 
 And even more with :
 
+* forms validation
 * i18n translation tool
-* token authentication methods
-* drag n drop
+* token based authentication
+* drag'n'drop
 
-available in few lines of code, already loaded in your app and available through
-directive, factories, and services.
+build with few lines of code, already loaded in your app and available through
+angular directives, factories, and services.
 
 Getting Started
 ----
@@ -60,7 +61,12 @@ web/
     js/             --> destination of coffee compilation
 ```
 
-Built-in commands and options
+Built-in commands and options:
+-------
+After a 'Grunt serve' command, and the laucnh of express instance, a watch is
+automatically running and will take care of updated files recompilation.
+More commands are also available independantly :
+
 ----
 * Build all files
 ```sh
@@ -84,7 +90,7 @@ grunt html2js
 
 Testing
 -------
-100% of the current code is covered with unit tests.
+100% of the current project code is covered by unit tests.
 * exec:
 ```sh
 grunt test
