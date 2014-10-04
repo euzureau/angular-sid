@@ -34,7 +34,7 @@ define [
 
             describe "init: ", ->
                 it "should exists", ->
-                    i18n = $compile('<p i18n="brand"></p>')(scope)
+                    i18n = $compile('<p i18n></p>')(scope)
                     expect(i18n.length).toEqual 1
 
                 it "should return label", ->

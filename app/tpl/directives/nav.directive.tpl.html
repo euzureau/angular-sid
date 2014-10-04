@@ -33,27 +33,20 @@
                         href="#"
                         class="dropdown-toggle"
                         data-toggle="dropdown"
-                        i18n="dropdown"
+                        i18n="language"
                         i18n-prepend="true">
                             <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="index" i18n="action"></a>
+                            <a
+                                ng-click="switchLang('EN_en')"
+                                href="#">EN_en</a>
                         </li>
                         <li>
-                            <a href="#" i18n="another-action"></a>
-                        </li>
-                        <li>
-                            <a href="index" i18n="something-else-here"></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="index" i18n="separated-link"></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#" i18n="one-more-separated-link"></a>
+                            <a
+                                ng-click="switchLang('FR_fr')"
+                                href="#">FR_fr</a>
                         </li>
                     </ul>
                 </li>
