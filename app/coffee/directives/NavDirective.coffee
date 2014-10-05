@@ -12,14 +12,15 @@ define [], ->
     # </pre>
     ###
     [
-        "$log", 'i18nFactory', '$location'
-        ($log, i18nFactory, $location) ->
+        "$log", 'i18nFactory','i18nService', '$location'
+        ($log, i18nFactory, i18nService, $location) ->
             restrict: 'A'
             templateUrl: "directives/nav.directive.tpl.html"
             replace: false
             scope: true
 
             link: ($scope, $element, $attrs) ->
+                $scope.lang = i18nService.getLang()
                 ###*
                 # @ngdoc function
                 # @name switchLanguage
@@ -28,9 +29,9 @@ define [], ->
                 # @param {String} lang the request lang
                 # @description switch to the requested language
                 ###
-                $scope.switchLang = (lang) ->
+                $scope.switchLang = ($event) ->
                     i18nFactory
-                        .getLang lang
+                        .getLang $scope.lang
                         .then (data) ->
                             $location.path '/'
     ]

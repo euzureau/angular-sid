@@ -50,6 +50,7 @@ define [
                         .when("GET", "lang/FR_fr/bundles.json")
                         .respond (method, url, data, headers) ->
                             [ 200, {}, {}]
-                    navDirective.scope().switchLang 'FR_fr'
+                    navDirective.scope().lang = 'FR_fr'
+                    navDirective.scope().switchLang()
                     $httpBackend.flush()
                     expect(i18nService.getLang()).toEqual 'FR_fr'
