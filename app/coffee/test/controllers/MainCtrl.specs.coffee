@@ -29,7 +29,7 @@ define [
                     scope = $rootScope.$new()
 
                     $httpBackend
-                        .when("GET", "lang/EN_en.json")
+                        .when("GET", "lang/EN_en/bundles.json")
                         .respond (method, url, data, headers) ->
                             [ 200, {}, {}]
 

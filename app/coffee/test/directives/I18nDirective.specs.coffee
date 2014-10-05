@@ -39,7 +39,7 @@ define [
 
                 it "should return label", ->
                     $httpBackend
-                        .when("GET", "lang/EN_en.json")
+                        .when("GET", "lang/EN_en/bundles.json")
                         .respond (method, url, data, headers) ->
                             [ 200, { "brand" : "Brand" }, {}]
                     i18nFactory.getLang()
@@ -50,7 +50,7 @@ define [
             describe "options: ", ->
                 beforeEach ->
                     $httpBackend
-                        .when("GET", "lang/EN_en.json")
+                        .when("GET", "lang/EN_en/bundles.json")
                         .respond (method, url, data, headers) ->
                             [ 200, { "brand" : "Brand" }, {}]
                     i18nFactory.getLang()

@@ -47,7 +47,7 @@ define [
                     navDirective = $compile('<div nav-directive></div>')(scope)
                     scope.$apply()
                     $httpBackend
-                        .when("GET", "lang/FR_fr.json")
+                        .when("GET", "lang/FR_fr/bundles.json")
                         .respond (method, url, data, headers) ->
                             [ 200, {}, {}]
                     navDirective.scope().switchLang 'FR_fr'

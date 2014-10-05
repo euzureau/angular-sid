@@ -47,7 +47,7 @@ define [], ->
                 else
                     mylang  = config.DEFAULT_LANG if mylang is null
                     $http
-                        .get('lang/' + mylang + '.json')
+                        .get('lang/' + mylang + '/bundles.json')
                         .then (response) ->
                             i18nService.setLang mylang
                             i18nService.setBundles response.data

@@ -69,7 +69,7 @@ module.exports = (grunt) ->
         #
         express:
             options:
-                debug: true
+                debug: false
                 port: 9002
                 background: true
                 opts: ['node_modules/coffee-script/bin/coffee']
@@ -78,6 +78,10 @@ module.exports = (grunt) ->
                 options :
                     script: 'server/server.coffee'
                     node_env: 'local'
+            dev:
+                options :
+                    script: 'server/server.coffee'
+                    node_env: 'dev'
         #
         # open
         #
@@ -129,9 +133,17 @@ module.exports = (grunt) ->
                     dest: 'web/js'
                     rename: renameConfig
                 ]
-            all:
+            dev:
                 options:
-                    sourcemap: true
+                    sourcemap: false
+                files: [
+                    expand: true
+                    cwd: 'app/coffee'
+                    src: ['constants/config/_dev.coffee']
+                    dest: 'web/js'
+                    rename: renameConfig
+                ]
+            all:
                 files: [
                     expand: true
                     cwd: 'app/coffee'
@@ -150,23 +162,26 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-karma'
     grunt.loadNpmTasks 'grunt-ngdocs'
 
-    grunt.registerTask 'serve', () ->
+    grunt.registerTask 'serve', (target) ->
+        target = 'local' if target is undefined
         grunt.task.run([
-            'build'
-            'express:local'
+            'build:' + target
+            'express:' + target
             'open:server'
             'watch'
         ])
 
-    grunt.registerTask 'build', [
-        'clean:all'
-        'less:all'
-        'coffee:local'
-        'coffee:all'
-        'html2js:main'
-        'ngdocs'
-        'karma'
-    ]
+    grunt.registerTask 'build', (target) ->
+        target = 'local' if target is undefined
+        grunt.task.run([
+            'clean:all'
+            'less:all'
+            'coffee:' + target
+            'coffee:all'
+            'html2js:main'
+            'ngdocs'
+            'karma'
+        ])
 
     grunt.registerTask 'test', [
         'karma'

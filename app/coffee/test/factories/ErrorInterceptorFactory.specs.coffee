@@ -29,7 +29,7 @@ define [
                     scope = $rootScope.$new()
 
                     $httpBackend
-                        .when("GET", "lang/EN_en.json")
+                        .when("GET", "lang/EN_en/bundles.json")
                         .respond (method, url, data, headers) ->
                             [ 200, {}, {}]
 
@@ -46,7 +46,7 @@ define [
                 it "should handle error 500", ->
                     rsSpy = spyOn($rootScope, '$broadcast').andCallThrough()
                     $httpBackend
-                        .when("GET", "lang/FR_fr.json")
+                        .when("GET", "lang/FR_fr/bundles.json")
                         .respond (method, url, data, headers) ->
                             [ 500, {}, {}]
                     i18nFactory.getLang 'FR_fr'
@@ -56,7 +56,7 @@ define [
 
                 it "should redirect to login", ->
                     $httpBackend
-                        .when("GET", "lang/FR_fr.json")
+                        .when("GET", "lang/FR_fr/bundles.json")
                         .respond (method, url, data, headers) ->
                             [ 401, {}, {}]
                     i18nFactory.getLang 'FR_fr'

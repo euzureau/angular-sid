@@ -37,11 +37,11 @@ define [
                 it "should fetch default bundle", ->
                     alternative = 'FR_fr'
                     $httpBackend
-                        .when("GET", "lang/EN_en.json")
+                        .when("GET", "lang/EN_en/bundles.json")
                         .respond (method, url, data, headers) ->
                             [ 200, {}, {}]
                     $httpBackend
-                        .when("GET", "lang/FR_fr.json")
+                        .when("GET", "lang/FR_fr/bundles.json")
                         .respond (method, url, data, headers) ->
                             [ 200, {}, {}]
                     i18nFactory.getLang(config.DEFAULT_LANG)

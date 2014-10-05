@@ -1,6 +1,6 @@
 {
     "angular-sid-license" : "Angular Sid, MIT - 2014",
-    "h1" : "Angular Sid",
+    "h1" : "Angular Sid: a seed for html5, AngularJS, NodeJS development",
     "action" : "Action",
     "close" : "Close",
     "code-documentation" : "Documentation",
@@ -23,6 +23,7 @@
     "not-logged-in" : "Not logged in",
     "password" : "Password",
     "project-on-github" : "Project on Github",
+    "search" : "Search",
     "submit" : "Submit",
 
     "brand" : "Brand",

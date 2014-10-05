@@ -31,7 +31,7 @@ define [
                     $location.path '/login'
 
                     $httpBackend
-                        .when("GET", "lang/EN_en.json")
+                        .when("GET", "lang/EN_en/bundles.json")
                         .respond (method, url, data, headers) ->
                             [ 200, {}, {}]
 
