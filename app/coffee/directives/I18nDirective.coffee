@@ -61,15 +61,21 @@ define [], ->
                     else
                         elmt.append html
 
-                setElement 'title', tAttrs.i18nTitle if tAttrs.i18nTitle
+                if tAttrs.i18nTitle
+                    setElement 'title', tAttrs.i18nTitle
 
-                setElement 'alt', tAttrs.i18nAlt if tAttrs.i18nAlt
+                if tAttrs.i18nAlt
+                    setElement 'alt', tAttrs.i18nAlt
 
-                setElement 'name', tAttrs.i18nName if tAttrs.i18nName
+                if tAttrs.i18nName
+                    setElement 'name', tAttrs.i18nName
 
-                setElement 'href', tAttrs.i18nHref if tAttrs.i18nHref
+                if tAttrs.i18nHref
+                    setElement 'href', tAttrs.i18nHref
 
-                setElement 'placeholder', tAttrs.i18nPlaceholder if tAttrs.i18nPlaceholder
+                if tAttrs.i18nPlaceholder
+                    setElement 'placeholder', tAttrs.i18nPlaceholder
 
-                translate tAttrs, tElement if tAttrs.i18n
+                if tAttrs.i18n
+                    translate tAttrs, tElement
     ]

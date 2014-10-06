@@ -4,7 +4,8 @@ e-xode freelances
 ###
 tests = []
 for file of window.__karma__.files
-    tests.push file  if /specs\.js$/.test(file) if window.__karma__.files.hasOwnProperty(file)
+    if window.__karma__.files.hasOwnProperty(file)
+        tests.push file  if /specs\.js$/.test(file)
 require.config
     baseUrl: '/base/web/js',
     paths:
