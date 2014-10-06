@@ -45,6 +45,44 @@ module.exports = (grunt) ->
                 dest: 'web/js/templates.js'
                 module: 'angular-sid-templates'
         #
+        # requirejs
+        #
+        requirejs:
+            compile:
+                options:
+                    mainConfigFile: "web/js/main.js"
+                    name: "main"
+                    out: "web/js/main.js"
+                    paths:
+                        'jquery': '../bundles/jquery/dist/jquery'
+                        'angular': '../bundles/angular/angular'
+                        'angular-animate': '../bundles/angular-animate/angular-animate'
+                        'angular-route': '../bundles/angular-route/angular-route',
+                        'angular-resource'  : '../bundles/angular-resource/angular-resource'
+                        'angular-cookies'  : '../bundles/angular-cookies/angular-cookies'
+                        'angular-sanitize': '../bundles/angular-sanitize/angular-sanitize'
+                        'angular-bootstrap' : '../bundles/angular-bootstrap/ui-bootstrap'
+                        'templates' : '../js/templates'
+        #
+        # compress
+        #
+        compress:
+            main:
+                options:
+                    archive: do ->
+                        d = new Date()
+                        c_date = d.getDate()
+                        c_month = d.getMonth() + 1
+                        c_year = d.getFullYear()
+                        c_date = '0' + c_date if c_date <= 9
+                        c_month = '0' + c_month if c_month <= 9
+                        now = c_year + "-" + c_month + "-" + c_date
+                        return 'angular-sid-' + now + '.tar.gz'
+                    mode: 'tgz'
+                files: [
+                    src: ['web/**'], 'dest' : ''
+                ]
+        #
         # watch
         #
         watch :
@@ -52,7 +90,7 @@ module.exports = (grunt) ->
                 livereload: true
             coffee:
                 files: ['**/*.coffee']
-                tasks: ['coffee:local', 'coffee:all']
+                tasks: ['coffee:local']
             less:
                 files : ['**/*.less']
                 tasks : ['less:all']
@@ -72,6 +110,7 @@ module.exports = (grunt) ->
                 debug: false
                 port: 9002
                 background: true
+                cmd: process.argv[0],
                 opts: ['node_modules/coffee-script/bin/coffee']
                 args: []
             local:
@@ -161,6 +200,8 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-html2js'
     grunt.loadNpmTasks 'grunt-karma'
     grunt.loadNpmTasks 'grunt-ngdocs'
+    grunt.loadNpmTasks 'grunt-contrib-requirejs'
+    grunt.loadNpmTasks 'grunt-contrib-compress'
 
     grunt.registerTask 'serve', (target) ->
         target = 'local' if target is undefined
@@ -169,6 +210,14 @@ module.exports = (grunt) ->
             'express:' + target
             'open:server'
             'watch'
+        ])
+
+    grunt.registerTask 'release', (target) ->
+        target = 'local' if target is undefined
+        grunt.task.run([
+            'build:' + target
+            'requirejs'
+            'compress'
         ])
 
     grunt.registerTask 'build', (target) ->

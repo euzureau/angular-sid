@@ -33,6 +33,8 @@
         "grunt-contrib-less": "latest",
         "grunt-open" : "latest",
         "grunt-contrib-watch" : "latest",
+        "grunt-contrib-requirejs": "latest",
+        "grunt-contrib-compress" : "latest",
         "grunt-html2js" : "latest",
         "grunt-karma": "latest",
         "grunt-ngdocs" :"latest"
