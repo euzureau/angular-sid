@@ -113,7 +113,7 @@ module.exports = (grunt) ->
                 livereload: true
             coffee:
                 files: ['**/*.coffee']
-                tasks: ['coffee:local']
+                tasks: ['coffeelint', 'coffee:local']
             less:
                 files : ['**/*.less']
                 tasks : ['less:all']
