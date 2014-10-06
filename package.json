@@ -5,7 +5,7 @@
     "repository" :"cbragard/angular-sid",
     "version": "0.0.2",
     "scripts" : {
-        "test" : "grunt test"
+        "test" : "grunt build"
     },
     "dependencies": {
         "body-parser" : "1.9.0",
