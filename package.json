@@ -4,7 +4,7 @@
     "license" : "MIT",
     "repository" :"cbragard/angular-sid",
     "version": "0.0.2",
-    "scripts" :{
+    "scripts" : {
         "test" : "grunt test"
     },
     "dependencies": {
