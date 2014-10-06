@@ -30,7 +30,7 @@
         "karma-phantomjs-launcher" : "0.1.4",
         "karma-coverage" : "0.2.6",
         "grunt-cli" : "0.1.13",
-        "grunt" : "master",
+        "grunt" : "0.4.5",
         "grunt-express-server": "0.4.19",
         "grunt-contrib-clean": "0.4.0-rc6",
         "grunt-contrib-coffee": "0.12.0",
