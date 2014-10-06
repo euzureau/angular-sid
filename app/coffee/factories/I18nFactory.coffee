@@ -40,7 +40,7 @@ define [], ->
             getLang: (mylang=null) ->
                 defer = $q.defer()
                 oldLang = i18nService.getLang()
-                newLang = myLang or oldLang or config.DEFAULT_LANG
+                newLang = mylang or oldLang or config.DEFAULT_LANG
                 if newlang is oldLang
                     defer.resolve lang
                 else
