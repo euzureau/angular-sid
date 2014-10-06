@@ -39,15 +39,13 @@ define [], ->
             ###
             getLang: (mylang=null) ->
                 defer = $q.defer()
-                lang = i18nService.getLang()
-                if mylang isnt null and mylang is lang
-                    defer.resolve lang
-                else if mylang is null and lang isnt undefined
+                oldLang = i18nService.getLang()
+                newLang = myLang or oldLang or config.DEFAULT_LANG;
+                if newlang is oldLang
                     defer.resolve lang
                 else
-                    mylang  = config.DEFAULT_LANG if mylang is null
                     $http
-                        .get('lang/' + mylang + '/bundles.json')
+                        .get('lang/' + newLang + '/bundles.json')
                         .then (response) ->
                             i18nService.setLang mylang
                             i18nService.setBundles response.data
