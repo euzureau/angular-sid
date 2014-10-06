@@ -47,8 +47,8 @@ define [], ->
                     $http
                         .get('lang/' + newlang + '/bundles.json')
                         .then (response) ->
-                            i18nService.setLang mylang
+                            i18nService.setLang newlang
                             i18nService.setBundles response.data
-                            defer.resolve mylang
+                            defer.resolve newlang
                 defer.promise
     ]
