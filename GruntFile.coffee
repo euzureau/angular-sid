@@ -34,6 +34,29 @@ module.exports = (grunt) ->
         karma:
             unit:
                 configFile: 'karma.config.coffee'
+
+        #
+        # coffeelint
+        #
+        coffeelint:
+            app: [
+                'app/coffee/**/*.coffee',
+                '!app/coffee/test/**/*',
+                '!app/coffee/**/*._coffee'
+            ]
+            test:
+                files:
+                    src: ['app/coffee/test/**/*.coffee']
+            options:
+                'indentation' :
+                    "value": 4
+                    "level": "error"
+
+                'no_trailing_whitespace' :
+                    'level' : 'error'
+
+                'max_line_length' :
+                    'level' : 'warn'
         #
         # html2js
         #
@@ -202,6 +225,7 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-ngdocs'
     grunt.loadNpmTasks 'grunt-contrib-requirejs'
     grunt.loadNpmTasks 'grunt-contrib-compress'
+    grunt.loadNpmTasks 'grunt-coffeelint'
 
     grunt.registerTask 'serve', (target) ->
         target = 'local' if target is undefined
@@ -223,6 +247,7 @@ module.exports = (grunt) ->
     grunt.registerTask 'build', (target) ->
         target = 'local' if target is undefined
         grunt.task.run([
+            'coffeelint'
             'clean:all'
             'less:all'
             'coffee:' + target

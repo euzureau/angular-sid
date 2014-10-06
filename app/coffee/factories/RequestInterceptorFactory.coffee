@@ -9,8 +9,8 @@ define [], ->
     # @name angular-sid-factories.requestInterceptorFactory
     # @description
     # angular sid requestInterceptorFactory
-    # Intercepts all http errors and broadcast to application specific error event
-    # to allow custom handling.
+    # Intercepts all http errors and broadcast to application
+    # specific error event to allow custom handling.
     # <h2>Settings</h2>
     # <pre>
     # <style type="text/css">
@@ -31,6 +31,8 @@ define [], ->
             ###
             request: (config) ->
                 if authService.isLogged()
-                    config.headers.Authorization = 'Bearer ' + authService.getToken()
+                    config
+                        .headers
+                        .Authorization = 'Bearer ' + authService.getToken()
                 config
     ]

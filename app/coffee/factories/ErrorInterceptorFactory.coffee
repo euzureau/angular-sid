@@ -9,8 +9,8 @@ define [], ->
     # @name angular-sid-factories.errorInterceptorFactory
     # @description
     # angular sid errorInterceptorFactory
-    # Intercepts all http errors and broadcast to application specific error event
-    # to allow custom handling.
+    # Intercepts all http errors and broadcast to application specific
+    # error event to allow custom handling.
     # <h2>Settings</h2>
     # <pre>
     # <style type="text/css">

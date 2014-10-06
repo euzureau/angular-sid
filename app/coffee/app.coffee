@@ -38,6 +38,7 @@ define [
             'angular-sid-templates'
             'angular-sid-constants'
         ]
+        .config routes
         .config [
             '$interpolateProvider'
             ($interpolateProvider) ->
@@ -58,6 +59,5 @@ define [
               $httpProvider.interceptors.push "errorInterceptorFactory"
               $httpProvider.interceptors.push "requestInterceptorFactory"
         ]
-        .config routes
     $body = angular.element('body')
     angular.bootstrap $body, [name]
